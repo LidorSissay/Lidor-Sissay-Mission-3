@@ -3,12 +3,13 @@ import type DevelopmentTeam from "../../models/DevelopmentTeam";
 import type Meeting from "../../models/Meeting";
 
 import { getDevelopmentTeams } from "../../services/development-teams";
-import { getMeetingsByTeam } from "../../services/meetings";
+import { deleteMeeting, getMeetingsByTeam } from "../../services/meetings";
 
 export default function Meetings() {
 
     const [teams, setTeams] = useState<DevelopmentTeam[]>([])
     const [meetings, setMeetings] = useState<Meeting[]>([])
+    const [selectedTeamId, setSelectedTeamId] = useState<string>("")
 
     useEffect(() => {
 
@@ -22,21 +23,29 @@ export default function Meetings() {
 
         const teamId = event.target.value
 
+        setSelectedTeamId(teamId)
+
         if (!teamId) {
             setMeetings([])
             return
         }
 
-        try {
+        const meetings = await getMeetingsByTeam(teamId)
+        setMeetings(meetings)
+    }
 
-            const meetings = await getMeetingsByTeam(teamId)
+    async function handleDelete(meetingId: string) {
 
+        const sure = confirm("Are you sure you want to delete this meeting?")
+
+        if (!sure) return
+
+        await deleteMeeting(meetingId)
+
+        if (selectedTeamId) {
+            const meetings = await getMeetingsByTeam(selectedTeamId)
             setMeetings(meetings)
-
-        } catch (err) {
-            console.error(err)
         }
-
     }
 
     return (
@@ -44,22 +53,16 @@ export default function Meetings() {
 
             <h1>Meetings</h1>
 
-            <select onChange={handleTeamChange}>
-                <option value="">
-                    Select Team
-                </option>
+            <select value={selectedTeamId} onChange={handleTeamChange}>
+                <option value="">Select Team</option>
 
                 {
                     teams.map(team => (
-                        <option
-                            key={team.id}
-                            value={team.id}
-                        >
+                        <option key={team.id} value={team.id}>
                             {team.name}
                         </option>
                     ))
                 }
-
             </select>
 
             <hr />
@@ -70,17 +73,13 @@ export default function Meetings() {
 
                         <h3>{meeting.description}</h3>
 
-                        <p>
-                            Room: {meeting.roomName}
-                        </p>
+                        <p>Room: {meeting.roomName}</p>
+                        <p>Start: {meeting.startDateTime}</p>
+                        <p>End: {meeting.endDateTime}</p>
 
-                        <p>
-                            Start: {meeting.startDateTime}
-                        </p>
-
-                        <p>
-                            End: {meeting.endDateTime}
-                        </p>
+                        <button onClick={() => handleDelete(meeting.id)}>
+                            Delete
+                        </button>
 
                     </div>
                 ))
