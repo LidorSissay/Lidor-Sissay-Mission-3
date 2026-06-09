@@ -4,6 +4,7 @@ import type Meeting from "../../models/Meeting";
 
 import { getDevelopmentTeams } from "../../services/development-teams";
 import { deleteMeeting, getMeetingsByTeam } from "../../services/meetings";
+import "./Meetings.css";
 
 function getDuration(startDateTime: string, endDateTime: string): string {
     const start = new Date(startDateTime)
@@ -23,6 +24,13 @@ function formatDateTime(dateTime: string): string {
         dateStyle: "short",
         timeStyle: "short"
     })
+}
+
+function getMeetingClassName(startDateTime: string): string {
+    const start = new Date(startDateTime)
+    const now = new Date()
+
+    return start > now ? "meeting-card future" : "meeting-card past"
 }
 
 export default function Meetings() {
@@ -82,7 +90,10 @@ export default function Meetings() {
 
             {
                 meetings.map(meeting => (
-                    <div key={meeting.id}>
+                    <div
+                        key={meeting.id}
+                        className={getMeetingClassName(meeting.startDateTime)}
+                    >
 
                         <h3>{meeting.description}</h3>
 
