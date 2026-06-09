@@ -1,0 +1,33 @@
+.AddMeeting {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.AddMeeting h2 {
+  text-align: center;
+}
+
+.AddMeeting form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.AddMeeting label {
+  margin-top: 0.75rem;
+}
+
+.AddMeeting label:first-of-type {
+  margin-top: 0;
+}
+
+.AddMeeting button {
+  margin-top: 1.25rem;
+  align-self: flex-start;
+}

@@ -1,14 +1,18 @@
-.Meetings .meeting-card {
-    border: 1px solid black;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
+.Meetings {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.Meetings .future {
-    background-color: orange;
+.Meetings h2 {
+  text-align: center;
 }
 
-.Meetings .past {
-    background-color: lightgreen;
+.Meetings select {
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.Meetings hr {
+  margin: 1.5rem 0;
 }

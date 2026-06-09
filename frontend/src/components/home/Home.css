@@ -1,0 +1,21 @@
+.Home {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Home p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.Home img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
