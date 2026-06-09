@@ -45,7 +45,7 @@ export default function Meetings() {
     return (
         <div className="Meetings">
 
-            <h1>Meetings</h1>
+            <h2>Meetings</h2>
 
             <select value={selectedTeamId} onChange={handleTeamChange}>
                 <option value="" disabled>

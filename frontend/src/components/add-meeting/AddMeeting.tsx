@@ -63,7 +63,7 @@ export default function AddMeeting() {
     return (
         <div className="AddMeeting">
 
-            <h1>Add Meeting</h1>
+            <h2>Add Meeting</h2>
 
             <form onSubmit={handleSubmit}>
 

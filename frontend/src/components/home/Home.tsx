@@ -1,8 +1,17 @@
+import "./Home.css"
+
 export default function Home() {
     return (
         <div className="Home">
-            <h1>Development Teams Meetings</h1>
-            <p>Welcome to the meetings management system.</p>
+
+            <h2>Welcome</h2>
+
+            <p>
+                This system helps manage meetings for development teams in the company.
+                You can view meetings by team, add new meetings, update existing meetings
+                and delete meetings.
+            </p>
+
         </div>
     )
 }

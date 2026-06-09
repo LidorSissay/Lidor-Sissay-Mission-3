@@ -1,9 +1,17 @@
 export default function About() {
     return (
         <div className="About">
-            <h1>About</h1>
-            <p>Meetings management system.</p>
-            <p>Your Name Here</p>
+
+            <h2>About</h2>
+
+            <p>
+                This system allows managing meetings for development teams.
+            </p>
+
+            <p>
+                Developed by Lidor Sissay.
+            </p>
+
         </div>
     )
 }
