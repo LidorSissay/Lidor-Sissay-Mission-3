@@ -1,7 +1,7 @@
 import axios from "axios";
 import type Meeting from "../models/Meeting";
 
-const baseUrl = "http://localhost:3000/meetings";
+const baseUrl = `${import.meta.env.VITE_REST_SERVER_URL}/meetings`;
 
 export async function getMeetingsByTeam(teamId: string): Promise<Meeting[]> {
     const response = await axios.get<Meeting[]>(`${baseUrl}/team/${teamId}`);
