@@ -1,0 +1,14 @@
+.MeetingCard {
+    border: 1px solid black;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.MeetingCard.future {
+    background-color: orange;
+}
+
+.MeetingCard.past {
+    background-color: lightgreen;
+}
